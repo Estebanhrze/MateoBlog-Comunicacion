@@ -64,8 +64,8 @@ const base = import.meta.env.BASE_URL;
 </style>
 
 <nav>
-  <a class={current === "" ? "selected" : ""} href={base}>home</a>
-  <a class={current === "about" ? "selected" : ""} href={`${base}about`}>about</a>
+  <a class={current === "" ? "selected" : ""} href={base}>inicio</a>
+  <a class={current === "about" ? "selected" : ""} href={`${base}about`}>sobre mí</a>
   <a class={current === "blog" ? "selected" : ""} href={`${base}blog`}>blog</a>
   <div class="theme-toggle-container">
     <ThemeToggleButton client:load />
