@@ -2,16 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const base = import.meta.env.BASE_URL;
-const title = 'My Astro Blog';
-const description = 'The perfect starter for your perfect blog.';
+const title = 'Mateo | Procesos y digitalización para negocios';
+const description = 'Ideas, herramientas y casos prácticos para optimizar procesos, ordenar la información y tomar mejores decisiones.';
 const permalink = new URL(base, Astro.site).href;
 ---
 
 <BaseLayout title={title} description={description} permalink={permalink}>
   <div class="home-container">
     <div class="home-copy">
-      <h1>Ordena tus procesos. Mejora tu negocio.</h1>
-      <p>Check out the docs on <a href="https://www.github.com/Charca/astro-blog-template" target="_blank" rel="noopener">GitHub</a> to get started.</p>
+      <h1>
+        <span>Ordena tus procesos.</span>
+        <span class="title-accent">Mejora tu negocio.</span>
+      </h1>
+      <p class="hero-description">
+        Soy Mateo, Ingeniero Comercial. Aquí encontrarás ideas, herramientas y casos prácticos
+        para optimizar procesos, ordenar la información y tomar mejores decisiones.
+      </p>
+      <div class="hero-actions">
+        <a class="hero-button primary" href={`${base}blog`}>Explorar el blog</a>
+        <a class="hero-button secondary" href={`${base}about`}>Sobre mí</a>
+      </div>
     </div>
 
     <div class="hero-image-container">
@@ -42,16 +52,86 @@ const permalink = new URL(base, Astro.site).href;
   }
 
   .home-copy h1 {
+    animation: reveal-left 700ms cubic-bezier(.2, .7, .2, 1) both;
+    font-size: clamp(2.75rem, 4vw, 4rem);
     font-weight: 700;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.35em;
     line-height: 1.3;
   }
 
-  .home-copy p {
-    font-size: 1.4em;
+  .home-copy h1 span {
+    display: block;
+  }
+
+  .title-accent {
+    position: relative;
+    width: fit-content;
+  }
+
+  .title-accent::after {
+    animation: draw-line 650ms ease-out 750ms both;
+    background: var(--primary-color);
+    bottom: 0.08em;
+    content: '';
+    height: 0.08em;
+    left: 0;
+    position: absolute;
+    transform-origin: left;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .hero-description {
+    animation: reveal-left 700ms cubic-bezier(.2, .7, .2, 1) 180ms both;
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin: 0 0 1.6em;
+    max-width: 42rem;
+  }
+
+  .hero-actions {
+    align-items: center;
+    animation: reveal-left 700ms cubic-bezier(.2, .7, .2, 1) 320ms both;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+
+  .hero-button {
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    font-family: var(--font-family-sans);
+    font-weight: 700;
+    padding: 0.65rem 1.15rem;
+    text-decoration: none;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+  }
+
+  .hero-button:hover {
+    transform: translateY(-2px);
+  }
+
+  .hero-button.primary {
+    background: var(--primary-color);
+    color: #fff;
+  }
+
+  .hero-button.primary:hover {
+    color: #fff;
+  }
+
+  .hero-button.secondary {
+    color: var(--text-main);
+  }
+
+  .hero-button.secondary:hover {
+    background: var(--primary-color);
+    color: #fff;
   }
 
   .hero-image-container {
+    animation: reveal-right 850ms cubic-bezier(.2, .7, .2, 1) 120ms both;
     margin: 0 1em;
     text-align: center;
   }
@@ -59,8 +139,49 @@ const permalink = new URL(base, Astro.site).href;
   .hero-image {
     display: block;
     width: 100%;
-    max-width: 550px;
+    max-width: 480px;
     margin-bottom: 1em;
+    animation: float-image 5s ease-in-out 1s infinite;
+  }
+
+  @keyframes reveal-left {
+    from {
+      opacity: 0;
+      transform: translate3d(-32px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes reveal-right {
+    from {
+      opacity: 0;
+      transform: translate3d(36px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes draw-line {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes float-image {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
   }
 
   @media (max-width: 1200px) {
@@ -69,7 +190,7 @@ const permalink = new URL(base, Astro.site).href;
     }
 
     .hero-image {
-      max-width: 400px;
+      max-width: 380px;
     }
   }
 
@@ -82,6 +203,35 @@ const permalink = new URL(base, Astro.site).href;
       flex: 0;
       padding-bottom: 2em;
       text-align: center;
+    }
+
+    .title-accent {
+      margin-inline: auto;
+    }
+
+    .hero-actions {
+      justify-content: center;
+    }
+
+    .hero-image {
+      max-width: 320px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-copy h1,
+    .hero-description,
+    .hero-actions,
+    .hero-image-container,
+    .hero-image,
+    .title-accent::after {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+
+    .hero-button {
+      transition: none;
     }
   }
 </style>
