@@ -14,6 +14,7 @@ Este era el problema de una ferretería de barrio que utilizaremos como caso pr�
 La solución no fue comprar una plataforma empresarial. Se construyó un sistema básico con Google Sheets, Google Forms, Google Drive y WhatsApp Business, herramientas que pueden utilizarse gratuitamente. El resultado fue un proceso más ordenado, fácil de aprender y adecuado para la realidad de un negocio pequeño.
 
 ## El problema: información dispersa y procesos manuales
+![Comparación entre un proceso con información dispersa y un sistema centralizado de inventario y pedidos](/MateoBlog-Comunicacion/assets/blog/inventario-pedidos-antes-despues.png)
 
 Antes de la digitalización, el inventario de la ferretería se controlaba en un cuaderno. Allí se anotaban algunas entradas de productos, pero no siempre se registraban las ventas. Por esta razón, las cantidades escritas rara vez coincidían con las existencias reales.
 
@@ -69,6 +70,8 @@ También se utilizó formato condicional para señalar con color rojo los produc
 La hoja fue compartida con los trabajadores responsables del inventario. Para evitar cambios accidentales, algunas columnas se protegieron y se definió quién podía editar cada sección.
 
 ## Tercer paso: organizar los pedidos en un solo lugar
+
+![Ejemplo de registro centralizado de pedidos con estados, responsables y datos del cliente](/MateoBlog-Comunicacion/assets/blog/registro-pedidos-estados.png)
 
 El siguiente componente fue una segunda hoja destinada a los pedidos. En ella se registraron los siguientes datos:
 
