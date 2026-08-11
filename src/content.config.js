@@ -8,6 +8,8 @@ const posts = defineCollection({
 		slug: z.string(),
 		publishDate: z.union([z.string(), z.date()]),
 		description: z.string(),
+		badge: z.string().optional(),
+		tags: z.array(z.string()).optional(),
 	}),
 });
 
